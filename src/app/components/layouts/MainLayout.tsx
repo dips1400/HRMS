@@ -1,10 +1,10 @@
-import { Outlet, Link, useLocation } from "react-router";
-import { 
-  LayoutDashboard, 
-  Users, 
-  Clock, 
-  CalendarDays, 
-  Wallet, 
+import { Outlet, Link, useLocation } from "react-router"
+import {
+  LayoutDashboard,
+  Users,
+  Clock,
+  CalendarDays,
+  Wallet,
   Briefcase,
   TrendingUp,
   GraduationCap,
@@ -16,12 +16,13 @@ import {
   Bell,
   LogOut,
   Menu,
-  X
-} from "lucide-react";
-import { Button } from "../ui/button";
-import { Avatar, AvatarFallback } from "../ui/avatar";
-import { Badge } from "../ui/badge";
-import { useState } from "react";
+  X,
+  Calculator,
+} from "lucide-react"
+import { Button } from "../ui/button"
+import { Avatar, AvatarFallback } from "../ui/avatar"
+import { Badge } from "../ui/badge"
+import { useState } from "react"
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
@@ -29,6 +30,7 @@ const navigation = [
   { name: "Attendance", href: "/attendance", icon: Clock },
   { name: "Leave Management", href: "/leave", icon: CalendarDays },
   { name: "Payroll", href: "/payroll", icon: Wallet },
+  { name: "Pay Scale & Calculations", href: "/payscale", icon: Calculator },
   { name: "Recruitment", href: "/recruitment", icon: Briefcase },
   { name: "Performance", href: "/performance", icon: TrendingUp },
   { name: "Training", href: "/training", icon: GraduationCap },
@@ -38,18 +40,18 @@ const navigation = [
   { name: "Documents", href: "/documents", icon: FileText },
   { name: "Grievances", href: "/grievances", icon: MessageSquare },
   { name: "Settings", href: "/settings", icon: Settings },
-];
+]
 
 export function MainLayout() {
-  const location = useLocation();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const isActive = (href: string) => {
     if (href === "/") {
-      return location.pathname === "/";
+      return location.pathname === "/"
     }
-    return location.pathname.startsWith(href);
-  };
+    return location.pathname.startsWith(href)
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -63,14 +65,22 @@ export function MainLayout() {
               className="lg:hidden"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
-              {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {sidebarOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
             <div>
-              <h1 className="text-xl font-semibold text-gray-900">Government HRMS</h1>
-              <p className="text-xs text-gray-500">Human Resource Management System</p>
+              <h1 className="text-xl font-semibold text-gray-900">
+                Government HRMS
+              </h1>
+              <p className="text-xs text-gray-500">
+                Human Resource Management System
+              </p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-3">
             <Button variant="ghost" size="sm" className="relative">
               <Bell className="h-5 w-5" />
@@ -96,20 +106,20 @@ export function MainLayout() {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside 
+        <aside
           className={`
             fixed lg:sticky top-[73px] left-0 z-30 h-[calc(100vh-73px)] 
             bg-white border-r border-gray-200 overflow-y-auto
             transition-transform duration-200 ease-in-out
-            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+            ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
             w-64
           `}
         >
           <nav className="p-4 space-y-1">
             {navigation.map((item) => {
-              const Icon = item.icon;
-              const active = isActive(item.href);
-              
+              const Icon = item.icon
+              const active = isActive(item.href)
+
               return (
                 <Link
                   key={item.name}
@@ -118,23 +128,24 @@ export function MainLayout() {
                   className={`
                     flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
                     transition-colors
-                    ${active 
-                      ? 'bg-blue-50 text-blue-700' 
-                      : 'text-gray-700 hover:bg-gray-50'
+                    ${
+                      active
+                        ? "bg-blue-50 text-blue-700"
+                        : "text-gray-700 hover:bg-gray-50"
                     }
                   `}
                 >
                   <Icon className="h-5 w-5 flex-shrink-0" />
                   <span>{item.name}</span>
                 </Link>
-              );
+              )
             })}
           </nav>
         </aside>
 
         {/* Mobile overlay */}
         {sidebarOpen && (
-          <div 
+          <div
             className="fixed inset-0 bg-black/20 z-20 lg:hidden"
             onClick={() => setSidebarOpen(false)}
           />
@@ -146,5 +157,5 @@ export function MainLayout() {
         </main>
       </div>
     </div>
-  );
+  )
 }

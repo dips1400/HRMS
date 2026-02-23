@@ -1,23 +1,26 @@
-import { createBrowserRouter } from "react-router";
-import { MainLayout } from "./components/layouts/MainLayout";
-import { Dashboard } from "./pages/Dashboard";
-import { EmployeeList } from "./pages/employees/EmployeeList";
-import { EmployeeProfile } from "./pages/employees/EmployeeProfile";
-import { AddEmployee } from "./pages/employees/AddEmployee";
-import { Attendance } from "./pages/attendance/Attendance";
-import { LeaveManagement } from "./pages/leave/LeaveManagement";
-import { PayrollDashboard } from "./pages/payroll/PayrollDashboard";
-import { SalarySlips } from "./pages/payroll/SalarySlips";
-import { Recruitment } from "./pages/recruitment/Recruitment";
-import { JobPostings } from "./pages/recruitment/JobPostings";
-import { Performance } from "./pages/performance/Performance";
-import { Training } from "./pages/training/Training";
-import { Transfers } from "./pages/transfers/Transfers";
-import { Retirement } from "./pages/retirement/Retirement";
-import { Reports } from "./pages/reports/Reports";
-import { Documents } from "./pages/documents/Documents";
-import { Grievances } from "./pages/grievances/Grievances";
-import { Settings } from "./pages/Settings";
+import { createBrowserRouter } from "react-router"
+import { MainLayout } from "./components/layouts/MainLayout"
+import { Dashboard } from "./pages/Dashboard"
+import { EmployeeList } from "./pages/employees/EmployeeList"
+import { EmployeeProfile } from "./pages/employees/EmployeeProfile"
+import { AddEmployee } from "./pages/employees/AddEmployee"
+import { Attendance } from "./pages/attendance/Attendance"
+import { LeaveManagement } from "./pages/leave/LeaveManagement"
+import { PayrollDashboard } from "./pages/payroll/PayrollDashboard"
+import { SalarySlips } from "./pages/payroll/SalarySlips"
+import { PayScaleManagement } from "./pages/payscale/PayScaleManagement"
+import { TediousCalculations } from "./pages/payscale/TediousCalculations"
+import { AllowanceCalculator } from "./pages/payscale/AllowanceCalculator"
+import { Recruitment } from "./pages/recruitment/Recruitment"
+import { JobPostings } from "./pages/recruitment/JobPostings"
+import { Performance } from "./pages/performance/Performance"
+import { Training } from "./pages/training/Training"
+import { Transfers } from "./pages/transfers/Transfers"
+import { Retirement } from "./pages/retirement/Retirement"
+import { Reports } from "./pages/reports/Reports"
+import { Documents } from "./pages/documents/Documents"
+import { Grievances } from "./pages/grievances/Grievances"
+import { Settings } from "./pages/Settings"
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +35,9 @@ export const router = createBrowserRouter([
       { path: "leave", Component: LeaveManagement },
       { path: "payroll", Component: PayrollDashboard },
       { path: "payroll/salary-slips", Component: SalarySlips },
+      { path: "payscale", Component: PayScaleManagement },
+      { path: "payscale/tedious", Component: TediousCalculations },
+      { path: "payscale/allowance", Component: AllowanceCalculator },
       { path: "recruitment", Component: Recruitment },
       { path: "recruitment/jobs", Component: JobPostings },
       { path: "performance", Component: Performance },
@@ -44,4 +50,4 @@ export const router = createBrowserRouter([
       { path: "settings", Component: Settings },
     ],
   },
-]);
+])
